@@ -1,14 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@1&family=Nunito:wght@500;600;700&family=Poppins:wght@500&display=swap');
+body{
+  font-family: "Poppins", serif;
+}
 .nav{
   position: fixed;
   top: 0;
   width: 100%;
   background-color: rgba(241, 144, 144, 0.436);
   padding: 10px;
+  z-index:100
 }
 .hero{
-  max-width: 1300px;
   margin: 10px auto;
-  padding: 31px 10px;
+  /* padding: 31px 10px; */
 }
 .sample{
   display: grid;
@@ -25,6 +29,7 @@
   display: grid;
   grid-template-columns: repeat(2,1fr);
   gap: 10px;
+  padding: 45px 10px;
 }
 /* .about{ */
 #about{
@@ -34,10 +39,16 @@
 .card{
   padding: 10px;
   text-align: center;
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
+  box-shadow: 0 0 20px 0 rgba(0,0,0,0.1) ;
 }
 /* .project{ */
 #product{
   display: grid;
   grid-template-columns: repeat(3,1fr);
+  gap: 10px;
+}
+#contact{
+  background-color: #000;
+  padding: 10px;
 }
