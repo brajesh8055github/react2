@@ -1,47 +1,112 @@
-import React, { useEffect } from 'react'
-import Project from './Project'
-import About from './About'
-import Contact from './Contact'
 import nike from '../image/nike.jpg'
 import nike3 from '../image/nike3.jpg'
 import nike5 from '../image/nike5.jpg'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import shoe from '../image/shoe.png'
+import React, { useEffect } from "react";
+import gsap from "gsap";
 
 const Home = () => {
+  useEffect(() => {
+    gsap.set(".a", { opacity: 0, y: 10 });
+    gsap.set("#right > img", { opacity: 0, y: 10, scale: 0.3, rotate: 240 });
 
-  useEffect(()=>{
-     AOS.init({duration: 2000})
-  },[])
+    const tl = gsap.timeline();
+
+    tl.from("#left", {
+      width: 0,
+      duration: 1.5,
+      ease: "expo.inOut",
+    })
+      .from("#right", {
+        width: 0,
+        duration: 1,
+        ease: "expo.inOut",
+      })
+      .to(".a", {
+        delay: -1.8,
+        stagger: 0.1,
+        opacity: 1,
+        y: 0,
+        duration: 2.5,
+        ease: "expo.inOut",
+      })
+      .to("#right > img", {
+        delay: -1.5,
+        opacity: 1,
+        y: 0,
+        rotate: -30,
+        scale: 1,
+        duration: 2,
+        ease: "expo.inOut",
+      });
+  }, []);
+
   return (
-    <div className='hero '>
-      <div className='content py-4'>
-        <div className='bg-red-500 text-white p-5'  data-aos="fade-right">
-          {/* <img src={nike} alt='img'></img> */}
-          <h1 className='text-4xl font-bold py-2'>Nike empower you to perform your best.</h1>
-          <h4 className='text-2xl font-bold py-2'>XYZ Series</h4>
-          <p className="py-4">Nike is a global leader in athletic footwear, apparel, and equipment. Founded in 1964 as Blue Ribbon Sports and renamed Nike, Inc. in 1971, the company is recognized for its innovative designs, high-performance products, and iconic "Swoosh" logo. Nike caters to athletes and fitness enthusiasts, offering a wide range of products including running shoes, training gear, sportswear, and lifestyle collections. </p>
-          <button className='bg-slate-50 text-red-500 py-2 px-4 rounded'>Check Out</button>
+    <div className="hero">
+      {/* Left Section */}
+      <div id="left">
+        <div id="text">
+          <h1 className="a">
+            <span>Nike</span>
+            <br />
+            Lorem ipsum dolor.
+          </h1>
+          <h2 className="a">XYZ Series</h2>
+          <p className="a">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
+            ratione fugiat ut dolores soluta possimus, expedita minus sunt
+            laudantium ipsa voluptatem quidem! Qui totam voluptates quasi
+            perferendis. Quisquam, tempore minima?
+          </p>
+          <button className="a">Check Out</button>
         </div>
-        <div data-aos="fade-left">
-        <h1 className='text-4xl font-bold py-2'>Nike,<span className='text-red-500'>Just Do It.</span></h1>
-        <h4>Exclusively Built for <strong>India</strong></h4>
-        <p className='py-4'>"Nike inspires greatness with innovative sportswear, cutting-edge technology, and bold designs. From athletes to everyday champions, we empower you to perform your best and express your unique style. Just Do It."</p>
-        <button className='bg-gray-500 text-white py-2 px-4 rounded mr-2'>Check Out For the Products</button>
-        <button className='bg-red-500 text-white py-2 px-4 rounded'>View 360</button>
-        <h4>Sample Images</h4>
-        <div className='sample'>
-          <img src={nike} alt='img'/>
-          <img src={nike3} alt='img'/>
-          <img src={nike5} alt='img'/>
+        <div id="btm" className="a">
+          <h3 className="a">Lorem, ipsum dolor.</h3>
+          <p className="a">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod iure
+            praesentium id minima, tempora ducimus?
+          </p>
         </div>
-        </div>
-        </div>
-        <About/>
-        <Project/>
-        <Contact/>
-    </div>
-  )
-}
+      </div>
 
-export default Home
+      {/* Right Section */}
+      <div id="right">
+        <img src={shoe} alt="shoe" />
+        <div id="cntr">
+          <h1 className="a">
+           <span>Nike</span> Lorem, ipsum.
+          </h1>
+          <h2 className="a">
+            Exclusively Built for <span>India</span>
+          </h2>
+          <p className="a">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
+            magnam aspernatur aut quos quaerat iure nostrum, porro quia commodi
+            dolorum nisi est consequuntur omnis vel sit labore ipsum rem
+            officia!
+          </p>
+          <div id="btns">
+            <button className="a">Check Out For The Products</button>
+            <button className="av">
+              View 360 <sup>o</sup>
+            </button>
+          </div>
+          <h3 id="sampletext" className="a">Sample Images</h3>
+          <div id="samples">
+            <div className="sample">
+              <img src={nike} alt="sample1" />
+            </div>
+            <div className="sample">
+              <img src={nike3} alt="sample2" />
+            </div>
+            <div className="sample">
+              <img src={nike5} alt="sample3" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
